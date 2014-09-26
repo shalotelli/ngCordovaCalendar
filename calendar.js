@@ -5,11 +5,11 @@
   'use strict';
 
   angular.module('ngCordova.plugins.calendar', [])
-    .factory('$cordovaCalendar', ['$q', '$window', function ($q, $window) {
+    .factory('$cordovaCalendar', [ '$q', '$window', function ($q, $window) {
       return {
-        createCalendar: function(options) {
+        createCalendar: function (options) {
           var d = $q.defer(),
-            createCalOptions = $window.plugins.calendar.getCreateCalendarOptions();
+              createCalOptions = $window.plugins.calendar.getCreateCalendarOptions();
 
           if (typeof options === 'string') {
             createCalOptions.calendarName = options;
@@ -17,36 +17,36 @@
             createCalOptions = angular.extend(createCalOptions, options);
           }
 
-          $window.plugins.calendar.createCalendar(createCalOptions, function() {
-            d.resolve();
-          }, function() {
-            d.reject();
+          $window.plugins.calendar.createCalendar(createCalOptions, function (message) {
+            d.resolve(message);
+          }, function (error) {
+            d.reject(error);
           });
 
           return d.promise;
         },
 
-        deleteCalendar: function(calendarName) {
+        deleteCalendar: function (calendarName) {
           var d = $q.defer();
 
-          $window.plugins.calendar.deleteCalendar(calendarName, function() {
-            d.resolve();
-          }, function() {
-            d.reject();
+          $window.plugins.calendar.deleteCalendar(calendarName, function (message) {
+            d.resolve(message);
+          }, function (error) {
+            d.reject(error);
           });
 
           return d.promise;
         },
 
-        createEvent: function(options) {
+        createEvent: function (options) {
           var d = $q.defer(),
-            defaultOptions = {
-              title: null,
-              location: null,
-              notes: null,
-              startDate: null,
-              endDate: null
-            };
+              defaultOptions = {
+                title: null,
+                location: null,
+                notes: null,
+                startDate: null,
+                endDate: null
+              };
 
           defaultOptions = angular.extend(defaultOptions, options);
 
@@ -56,28 +56,27 @@
             defaultOptions.notes,
             defaultOptions.startDate,
             defaultOptions.endDate,
-            function() {
-              d.resolve();
-            },
-            function() {
-              d.reject();
+            function (message) {
+              d.resolve(message);
+            }, function (error) {
+              d.reject(error);
             }
           );
 
           return d.promise;
         },
 
-        createEventWithOptions: function(options) {
+        createEventWithOptions: function (options) {
           var d = $q.defer(),
-            defaultOptionKeys = [],
-            calOptions = window.plugins.calendar.getCalendarOptions(),
-            defaultOptions = {
-              title: null,
-              location: null,
-              notes: null,
-              startDate: null,
-              endDate: null
-            };
+              defaultOptionKeys = [],
+              calOptions = window.plugins.calendar.getCalendarOptions(),
+              defaultOptions = {
+                title: null,
+                location: null,
+                notes: null,
+                startDate: null,
+                endDate: null
+              };
 
           defaultOptionKeys = Object.keys(defaultOptions);
 
@@ -96,26 +95,25 @@
             defaultOptions.startDate,
             defaultOptions.endDate,
             calOptions,
-            function() {
-              d.resolve();
-            },
-            function() {
-              d.reject();
-            }
+            function (message) {
+              d.resolve(message);
+            }, function (error) {
+              d.reject(error);
+            } 
           );
-
+        
           return d.promise;
         },
 
-        createEventInteractively: function(options) {
+        createEventInteractively: function (options) {
           var d = $q.defer(),
-            defaultOptions = {
-              title: null,
-              location: null,
-              notes: null,
-              startDate: null,
-              endDate: null
-            };
+              defaultOptions = {
+                title: null,
+                location: null,
+                notes: null,
+                startDate: null,
+                endDate: null
+              };
 
           defaultOptions = angular.extend(defaultOptions, options);
 
@@ -125,27 +123,26 @@
             defaultOptions.notes,
             defaultOptions.startDate,
             defaultOptions.endDate,
-            function() {
-              d.resolve();
-            },
-            function() {
-              d.reject();
-            }
+            function (message) {
+              d.resolve(message);
+            }, function (error) {
+              d.reject(error);
+            } 
           );
 
           return d.promise;
         },
 
-        createEventInNamedCalendar: function() {
+        createEventInNamedCalendar: function () {
           var d = $q.defer(),
-            defaultOptions = {
-              title: null,
-              location: null,
-              notes: null,
-              startDate: null,
-              endDate: null,
-              calendarName: null
-            };
+              defaultOptions = {
+                title: null,
+                location: null,
+                notes: null,
+                startDate: null,
+                endDate: null,
+                calendarName: null
+              };
 
           defaultOptions = angular.extend(defaultOptions, options);
 
@@ -156,26 +153,25 @@
             defaultOptions.startDate,
             defaultOptions.endDate,
             defaultOptions.calendarName,
-            function() {
-              d.resolve();
-            },
-            function() {
-              d.reject();
-            }
+            function (message) {
+              d.resolve(message);
+            }, function (error) {
+              d.reject(error);
+            } 
           );
-
+          
           return d.promise;
         },
 
-        findEvent: function(options) {
+        findEvent: function (options) {
           var d = $q.defer(),
-            defaultOptions = {
-              title: null,
-              location: null,
-              notes: null,
-              startDate: null,
-              endDate: null
-            };
+              defaultOptions = {
+                title: null,
+                location: null,
+                notes: null,
+                startDate: null,
+                endDate: null
+              };
 
           defaultOptions = angular.extend(defaultOptions, options);
 
@@ -185,67 +181,66 @@
             defaultOptions.notes,
             defaultOptions.startDate,
             defaultOptions.endDate,
-            function() {
-              d.resolve();
-            },
-            function() {
-              d.reject();
+            function (foundEvent) {
+              d.resolve(foundEvent);
+            }, function (error) {
+              d.reject(error);
             }
           );
 
           return d.promise;
         },
 
-        listEventsInRange: function(startDate, endDate) {
+        listEventsInRange: function (startDate, endDate) {
           var d = $q.defer();
 
-          $window.plugins.calendar.listEventsInRange(startDate, endDate, function() {
-            d.resolve();
-          }, function() {
-            d.reject();
+          $window.plugins.calendar.listEventsInRange(startDate, endDate, function (events) {
+            d.resolve(events);
+          }, function (error) {
+            d.reject(error);
           });
 
           return d.promise;
         },
 
-        listCalendars: function() {
+        listCalendars: function () {
           var d = $q.defer();
 
-          $window.plugins.calendar.listCalendars(function(calendars) {
+          $window.plugins.calendar.listCalendars(function (calendars) {
             d.resolve(calendars);
-          }, function() {
-            d.reject();
+          }, function (error) {
+            d.reject(error);
           });
 
           return d.promise;
         },
 
-        findAllEventsInNamedCalendar: function(calendarName) {
+        findAllEventsInNamedCalendar: function (calendarName) {
           var d = $q.defer();
 
-          $window.plugins.calendar.findAllEventsInNamedCalendar(calendarName, function() {
-            d.resolve();
-          }, function() {
-            d.reject();
+          $window.plugins.calendar.findAllEventsInNamedCalendar(calendarName, function (events) {
+            d.resolve(events);
+          }, function (error) {
+            d.reject(error);
           });
 
           return d.promise;
         },
 
-        modifyEvent: function(options) {
+        modifyEvent: function (options) {
           var d = $q.defer(),
-            defaultOptions = {
-              title: null,
-              location: null,
-              notes: null,
-              startDate: null,
-              endDate: null,
-              newTitle: null,
-              newLocation: null,
-              newNotes: null,
-              newStartDate: null,
-              newEndDate: null
-            };
+              defaultOptions = {
+                title: null,
+                location: null,
+                notes: null,
+                startDate: null,
+                endDate: null,
+                newTitle: null,
+                newLocation: null,
+                newNotes: null,
+                newStartDate: null,
+                newEndDate: null
+              };
 
           defaultOptions = angular.extend(defaultOptions, options);
 
@@ -260,26 +255,25 @@
             defaultOptions.newNotes,
             defaultOptions.newStartDate,
             defaultOptions.newEndDate,
-            function() {
-              d.resolve();
-            },
-            function() {
-              d.reject();
-            }
+            function (message) {
+              d.resolve(message);
+            }, function (error) {
+              d.reject(error);
+            } 
           );
 
           return d.promise;
         },
 
-        deleteEvent: function(options) {
+        deleteEvent: function (options) {
           var d = $q.defer(),
-            defaultOptions = {
-              newTitle: null,
-              location: null,
-              notes: null,
-              startDate: null,
-              endDate: null
-            };
+              defaultOptions = {
+                newTitle: null,
+                location: null,
+                notes: null,
+                startDate: null,
+                endDate: null
+              };
 
           defaultOptions = angular.extend(defaultOptions, options);
 
@@ -289,12 +283,11 @@
             defaultOptions.notes,
             defaultOptions.startDate,
             defaultOptions.endDate,
-            function() {
-              d.resolve();
-            },
-            function() {
-              d.reject();
-            }
+            function (message) {
+              d.resolve(message);
+            }, function (error) {
+              d.reject(error);
+            } 
           );
 
           return d.promise;
