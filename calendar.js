@@ -133,7 +133,7 @@
           return d.promise;
         },
 
-        createEventInNamedCalendar: function () {
+        createEventInNamedCalendar: function (options) {
           var d = $q.defer(),
               defaultOptions = {
                 title: null,
