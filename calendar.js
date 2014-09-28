@@ -54,8 +54,8 @@
             defaultOptions.title,
             defaultOptions.location,
             defaultOptions.notes,
-            defaultOptions.startDate,
-            defaultOptions.endDate,
+            new Date(defaultOptions.startDate),
+            new Date(defaultOptions.endDate),
             function (message) {
               d.resolve(message);
             }, function (error) {
@@ -92,8 +92,8 @@
             defaultOptions.title,
             defaultOptions.location,
             defaultOptions.notes,
-            defaultOptions.startDate,
-            defaultOptions.endDate,
+            new Date(defaultOptions.startDate),
+            new Date(defaultOptions.endDate),
             calOptions,
             function (message) {
               d.resolve(message);
@@ -121,8 +121,8 @@
             defaultOptions.title,
             defaultOptions.location,
             defaultOptions.notes,
-            defaultOptions.startDate,
-            defaultOptions.endDate,
+            new Date(defaultOptions.startDate),
+            new Date(defaultOptions.endDate),
             function (message) {
               d.resolve(message);
             }, function (error) {
@@ -150,8 +150,8 @@
             defaultOptions.title,
             defaultOptions.location,
             defaultOptions.notes,
-            defaultOptions.startDate,
-            defaultOptions.endDate,
+            new Date(defaultOptions.startDate),
+            new Date(defaultOptions.endDate),
             defaultOptions.calendarName,
             function (message) {
               d.resolve(message);
@@ -179,8 +179,8 @@
             defaultOptions.title,
             defaultOptions.location,
             defaultOptions.notes,
-            defaultOptions.startDate,
-            defaultOptions.endDate,
+            new Date(defaultOptions.startDate),
+            new Date(defaultOptions.endDate),
             function (foundEvent) {
               d.resolve(foundEvent);
             }, function (error) {
@@ -248,13 +248,13 @@
             defaultOptions.title,
             defaultOptions.location,
             defaultOptions.notes,
-            defaultOptions.startDate,
-            defaultOptions.endDate,
+            new Date(defaultOptions.startDate),
+            new Date(defaultOptions.endDate),
             defaultOptions.newTitle,
             defaultOptions.newLocation,
             defaultOptions.newNotes,
-            defaultOptions.newStartDate,
-            defaultOptions.newEndDate,
+            new Date(defaultOptions.newStartDate),
+            new Date(defaultOptions.newEndDate),
             function (message) {
               d.resolve(message);
             }, function (error) {
@@ -281,8 +281,8 @@
             defaultOptions.newTitle,
             defaultOptions.location,
             defaultOptions.notes,
-            defaultOptions.startDate,
-            defaultOptions.endDate,
+            new Date(defaultOptions.startDate),
+            new Date(defaultOptions.endDate),
             function (message) {
               d.resolve(message);
             }, function (error) {
